@@ -6,61 +6,62 @@ SQL database dump is in db_dump.sql file above. Download db_dump.sql file to you
 
 Data Analysis Using SQL
 1. Show all customer records
+2. 
 SELECT * FROM sales.customers;
-2. Show total number of customers
+3. Show total number of customers
 SELECT count(*) from sales.customers;
 select * from sales.transactions;
 
-3. Show transactions for Chennai market (market code for chennai is Mark001
+4. Show transactions for Chennai market (market code for chennai is Mark001
 Select * from sales.transactions where transactions.market_code= "Mark001";
 
-4.  Show transactions where currency is US dollars
+5.  Show transactions where currency is US dollars
 Select * from sales.transactions where currency="USD";
 
-5. Applying INNER JOIN ON the transaction table
+6. Applying INNER JOIN ON the transaction table
 
-6. Show transactions in 2020 join by date table
+7. Show transactions in 2020 join by date table
 SELECT sales.transactions.* , sales.date.*
 FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date where date.year=2020;
 
-7. Show total revenue in year 2020,
+8. Show total revenue in year 2020,
 SELECT SUM(sales.transactions.sales_amount)
 FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date where date.year=2020;
 
-8. show total revenue in year 2020, January Month,
+9. show total revenue in year 2020, January Month,
 SELECT SUM(sales.transactions.sales_amount)
 FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date where date.year=2020 and date.month_name="January";
 
-9. Show total revenue in year 2020 in Chennai
+10. Show total revenue in year 2020 in Chennai
 SELECT SUM(sales.transactions.sales_amount)
 FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date where date.year=2020 and transactions.market_code="Mark001";
 
-10. Show transactions in 2019 by date : Looks like the sales in 2019 were higher in 2019 and dropped in 2020
+11. Show transactions in 2019 by date : Looks like the sales in 2019 were higher in 2019 and dropped in 2020
 SELECT SUM(sales.transactions.sales_amount)
 FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date where date.year=2019;
 
-11. Show distrinct product codes that were sold in chennai
+12. Show distrinct product codes that were sold in chennai
 Select distinct product_code from sales.transactions where market_code="Mark001";
 
 
-12. Let's check if there are any other duplications in currency units by checking the distinct currency
+13. Let's check if there are any other duplications in currency units by checking the distinct currency
 Select distinct currency from sales.transactions ;
 /*
 'INR'  -- I copied these values from result grid below to check the actual nature of the duplicate INR values and we can see there exists some minor difference between both of them.
 'INR\r'
 */
 
-13. Let's check how many such transactions exists with this mutation 'INR\r'
+14. Let's check how many such transactions exists with this mutation 'INR\r'
 SELECT count(*) from transactions where transactions.currency = 'INR\r';   -- Ooops! We can see there are many such transactions around 150000
 Select count(*) from transactions where transactions.currency = 'INR';    -- 279 records 
 Select count(*) from transactions where transactions.currency = 'USD';    --  2 records 
