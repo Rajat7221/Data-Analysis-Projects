@@ -1,4 +1,4 @@
-# Sales Insights Data Analysis Project
+# Sales Intelligence Data Analysis Project
 
 ## Overview
 
