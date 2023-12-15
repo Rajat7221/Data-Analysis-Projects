@@ -16,7 +16,7 @@ This repository contains a sales data analysis project focusing on insights deri
 
 3. **Data Analysis Using Power BI:**
    - Utilize Power BI for further data analysis.
-   - A formula is provided to create a `norm_amount` column, taking into account currency conversion (assuming a conversion rate of 1 USD = 75 INR).
+   - A formula is provided to create a `norm_amount` column, taking into account currency conversion (assuming a conversion rate of 1 USD = 83 INR).
 
 ## SQL Queries
 
@@ -47,7 +47,7 @@ FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date WHERE date.year=2020;
 
-
+### Data Analysis in Power BI
 -- Formula to create norm_amount column
 = Table.AddColumn(#"Filtered Rows", "norm_amount", each if [currency] = "USD" or [currency] ="USD#(cr)" then [sales_amount]*75 else [sales_amount], type any)
 
