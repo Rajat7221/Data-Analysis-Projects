@@ -1,23 +1,26 @@
-Sales Insights Data Analysis Project
-Overview
-This repository contains a sales data analysis project focusing on insights derived from a SQL database. The database dump is provided in the db_dump.sql file. Follow the instructions below to set up the database and perform the data analysis using SQL queries and Power BI.
+# Sales Insights Data Analysis Project
 
-Setup Instructions
-Database Setup:
+## Overview
 
-Download the db_dump.sql file.
-Import the file into MySQL Workbench.
-Data Analysis Using SQL:
+This repository contains a sales data analysis project focusing on insights derived from a SQL database. The database dump is provided in the `db_dump.sql` file. Follow the instructions below to set up the database and perform the data analysis using SQL queries and Power BI.
 
-Use the provided SQL queries to perform various analyses on the sales data.
-Queries include showing customer records, total number of customers, transactions for specific markets and currencies, applying INNER JOIN operations, and calculating total revenue for specific time periods and markets.
-Data Analysis Using Power BI:
+## Setup Instructions
 
-Utilize Power BI for further data analysis.
-A formula is provided to create a norm_amount column, taking into account currency conversion (assuming a conversion rate of 1 USD = 75 INR).
-SQL Queries
-sql
-Copy code
+1. **Database Setup:**
+   - Download the `db_dump.sql` file.
+   - Import the file into MySQL Workbench.
+
+2. **Data Analysis Using SQL:**
+   - Use the provided SQL queries to perform various analyses on the sales data.
+   - Queries include showing customer records, total number of customers, transactions for specific markets and currencies, applying INNER JOIN operations, and calculating total revenue for specific time periods and markets.
+
+3. **Data Analysis Using Power BI:**
+   - Utilize Power BI for further data analysis.
+   - A formula is provided to create a `norm_amount` column, taking into account currency conversion (assuming a conversion rate of 1 USD = 75 INR).
+
+## SQL Queries
+
+```sql
 -- Example SQL Queries
 -- Show all customer records
 SELECT * FROM sales.customers;
@@ -43,15 +46,10 @@ SELECT SUM(sales.transactions.sales_amount)
 FROM sales.transactions
 INNER JOIN sales.date
 ON sales.transactions.order_date=sales.date.date WHERE date.year=2020;
-Power BI Formula
-powerbi
-Copy code
+
+
 -- Formula to create norm_amount column
 = Table.AddColumn(#"Filtered Rows", "norm_amount", each if [currency] = "USD" or [currency] ="USD#(cr)" then [sales_amount]*75 else [sales_amount], type any)
-Feel free to explore and adapt the queries and formulas based on your specific analysis needs. If you have any questions or need further assistance, please don't hesitate to ask.
-
-
-
 
 
 
