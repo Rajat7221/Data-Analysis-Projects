@@ -1,4 +1,4 @@
-# Overview
+# RBC Bank Customer Churn Analysis
 The "RBC Bank Customer Churn Analysis" is a real -time Power BI Data Analysis Project,sourcing the real data provided by DataVizon. It aims to provide valuable insights into customer churn within the RBC bank. By exploring various data attributes, the analysis seeks to understand the factors influencing customer decisions to leave the bank. The ultimate goal is to facilitate churn prevention strategies, enabling the development of effective loyalty programs and retention campaigns. 
 
 ## Business Requirements
